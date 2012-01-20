@@ -14,6 +14,17 @@ body {
     display: block;
 }
 
+#playButton {
+    float: left;
+    margin: 0 auto;
+    width: 113px;
+}
+
+#scoreButton {
+    float: right;
+    margin: 0 auto;
+}
+
 #stat {
     margin: 0 auto;
     width: 50%;
@@ -32,10 +43,9 @@ body {
 #container {
     margin: 0 auto;
     width: 75%;
-    min-height: 300px;
 }
 
-#message {
+#gameover_overlay {
     background: #999999;
     margin: 0;
     width: 100%;
@@ -44,13 +54,7 @@ body {
     opacity: 0.8;
     filter:alpha(opacity=80);
     text-align: center;
-    font-size: 28px;
-    color: #000000;
     display: none;
-}
-
-#message p {
-    margin-top: 20px;
 }
 
 .character {
@@ -66,26 +70,61 @@ body {
 }
 
 .enemy1 {
-    background: url("../img/ninja1.jpg");
+    background: url("../img/ninja1.png");
 }
 .enemy2 {
-    background: url("../img/ninja2.jpg");
+    background: url("../img/ninja2.png");
 }
 .enemy3 {
-    background: url("../img/ninja3.jpg");
+    background: url("../img/ninja3.png");
 }
 .enemy4 {
-    background: url("../img/enemy4.jpg");
+    background: url("../img/enemy4.png");
 }
 
 .enemy5 {
-    background: url("../img/enemy5.jpg");
+    background: url("../img/enemy5.png");
+}
+
+.enemy6 {
+    background: url("../img/ninja1.png");
+}
+.enemy7 {
+    background: url("../img/ninja2.png");
+}
+.enemy8 {
+    background: url("../img/ninja3.png");
+}
+.enemy9 {
+    background: url("../img/enemy4.png");
+}
+
+.enemy10 {
+    background: url("../img/enemy5.png");
+}
+
+.enemy11 {
+    background: url("../img/enemy6.jpg");
 }
 
 .ally1 {
-    background: url("../img/cat1.jpg");
+    background: url("../img/cat1.png");
 }
 
 .ally2 {
-    background: url("../img/cat2.jpg");
+    background: url("../img/cat2.png");
+}
+
+#high_scores {
+    font-size: 2em;
+}
+
+#high_scores li {
+    height: 1.5em;
+    margin-left: 25%;
+}
+
+span.score {
+    float: right;
+    margin-right: 35%;
 }

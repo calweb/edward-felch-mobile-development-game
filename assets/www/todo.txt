@@ -1,9 +1,15 @@
-Clean up the High Score page, the JQM list looks ugly
+Gameplay:
+    Don't scramble characters that are being displayed right now
+    Don't let multiple characters sit on each other 64 width/height
+    Animation of explosion when character is disappearing doesn't always show... when it starts to fade out
 
-Play around with animations, callbacks some more: http://docs.jquery.com/UI/Effects/Slide
-http://api.jquery.com/slideDown/
-High score DB?
-Rotation ? prefer landscape maybe?
+Secondary:
+    High scores not sorted.
+    Fix splash screen
+
+Later:
+    Main menu landscape / portrait messed up
+       detect orientation change, reset the max/min container size in game?
 
 
-Sounds?
+

@@ -7,6 +7,7 @@
     <script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
     <script type="text/javascript" src="js/jquery.countdown.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+    <script type="text/javascript" src="js/highscores.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.0.css" />
     <link rel="stylesheet" href="css/master.css"/>
@@ -17,9 +18,9 @@
         <h1>Ninjas and Cats</h1>
     </div>
     <div data-role="content">
-        <img class="main_image" src="img/ninja-icon.png" />
-        <a href="shoot.html" data-transition="slide" data-role="button" data-ajax="false">Play</a>
-        <a href="db.html" data-transition="slide" data-role="button">High Scores</a>
+        <a id="playButton" href="shoot.html" data-transition="slide" data-role="button" data-ajax="false">Play</a>
+        <a id="scoreButton" href="db.html" data-transition="slide" data-role="button">High Scores</a>
+        <img class="main_image" src="img/ninja-icon.png" width="256px" height="256px" />
     </div>
 </div>
 </body>

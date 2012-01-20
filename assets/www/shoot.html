@@ -7,6 +7,7 @@
     <script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
     <script type="text/javascript" src="js/jquery.countdown.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+    <script type="text/javascript" src="js/highscores.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.0.css" />
     <link rel="stylesheet" href="css/master.css"/>
@@ -16,51 +17,74 @@
     <div data-role="header" data-position="inline">
         <a href="ui.html" data-icon="arrow-l">Back</a>
         <h1>Shooting Gallery</h1>
-        <a href="#"><span id="hit">Score: 0</span></a>
-
+        <a href="#"><span id="gameScore">Score: 0</span></a>
     </div>
     <div data-role="content" id="content_container">
         <div id="stat">
-            <a href="#" data-transition="slide" data-role="button" data-ajax="false" id="btnstart">Start</a>
-            &nbsp;
+            <h2>
+                Don't kill the cats!
+            </h2>
+            <a href="#" data-role="button" id="startButton">Start</a>
         </div>
-
         <div id="note"></div>
-
         <div id="container">
             <div id="char1" class="character enemy1"></div>
             <div id="char2" class="character enemy2"></div>
             <div id="char3" class="character enemy3"></div>
-            <div id="char4" class="character ally ally1"></div>
-            <div id="char5" class="character ally ally2"></div>
-            <div id="char6" class="character enemy4"></div>
-            <div id="char7" class="character enemy5"></div>
+            <div id="char4" class="character enemy4"></div>
+            <div id="char5" class="character enemy5"></div>
+            <div id="char6" class="character enemy1"></div>
+            <div id="char7" class="character enemy2"></div>
+            <div id="char8" class="character enemy3"></div>
+            <div id="char9" class="character enemy4"></div>
+            <div id="char10" class="character enemy5"></div>
+            <div id="char11" class="character enemy6"></div>
+            <div id="char12" class="character ally ally1"></div>
+            <div id="char13" class="character ally ally2"></div>
         </div>
-
-        <div id="message"></div>
-
+        <div id="gameover_overlay"></div>
     </div><!-- /content -->
     <script type="text/javascript">
+        var portraitHeight;
+        var landscapeHeight;
+
         $(document).ready(function() {
-            $("#btnstart").click(function(){
+            $("#container").css("height", $(window).height() - 80);
+
+            $("#startButton").click(function(){
                 startplay();
             });
 
             $('.character').bind('tap',function(event, ui){
-                if ($(this).hasClass("ally")) {
-                    $(this).effect("bounce", {
-                        times: 2,
-                        direction: 'left'
-                    }, 300);
-                    hit--;
-                    $("#hit").html("Score: " + hit);
-                    $(this).slideUp("fast");
-                } else {
-                    $(this).hide("explode", { pieces: 16 }, 2000);
 
-                    //$(this).effect("explode", 500, 25);
-                    hit++;
-                    $("#hit").html("Score: " + hit);
+
+                if ($(this).hasClass("ally")) {
+                    navigator.notification.vibrate(200);
+                    // Bounce right, back and right again. 300 millisecond animation.
+                    $(this).effect("bounce",
+                        {
+                            times: 2,
+                            direction: 'right'
+                        },
+                        300);
+
+                    gameScore--;
+
+                    $("#gameScore").html("Score: " + gameScore);
+
+                    $(this).fadeOut("fast");
+                } else {
+                    // Explode into a random number of pieces. 300 millisecond animation.
+                    navigator.notification.vibrate(100);
+                    $(this).hide("explode",
+                        {
+                            pieces: Math.floor(Math.random() * 24)
+                        },
+                        400);
+
+                    gameScore++;
+
+                    $("#gameScore").html("Score: " + gameScore);
                 }
             });
         });
