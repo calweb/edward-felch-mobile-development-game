@@ -1,54 +1,27 @@
-// Audio player
-//
-var my_media = null;
-var mediaTimer = null;
-
 // Play audio
 //
-function playAudio(src) {
+function playAudio(src, media_var) {
     // Create Media object from src
-    my_media = new Media(src, onSuccess, onError);
+    media_var = new Media(src, onSuccess, onError);
 
     // Play audio
-    my_media.play();
-
-    // Update my_media position every second
-    if (mediaTimer == null) {
-        mediaTimer = setInterval(function() {
-            // get my_media position
-            my_media.getCurrentPosition(
-                // success callback
-                function(position) {
-                    if (position > -1) {
-                        setAudioPosition((position) + " sec");
-                    }
-                },
-                // error callback
-                function(e) {
-                    console.log("Error getting pos=" + e);
-                    setAudioPosition("Error: " + e);
-                }
-            );
-        }, 1000);
-    }
+    media_var.play();
 }
 
 // Pause audio
 //
-function pauseAudio() {
-    if (my_media) {
-        my_media.pause();
+function pauseAudio(media_var) {
+    if (media_var) {
+        media_var.pause();
     }
 }
 
 // Stop audio
 //
-function stopAudio() {
-    if (my_media) {
-        my_media.stop();
+function stopAudio(media_var) {
+    if (media_var) {
+        media_var.stop();
     }
-    clearInterval(mediaTimer);
-    mediaTimer = null;
 }
 
 // onSuccess Callback

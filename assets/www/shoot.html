@@ -55,6 +55,12 @@
             });
 
             $('.character').bind('tap', function (event, ui) {
+                var newMedia = null;
+                if (window.device)
+                {
+                    playAudio("/android_asset/ninjastar.mp3", newMedia);
+                }
+
                 if ($(this).hasClass("ally")) {
                     if (window.device)
                     {

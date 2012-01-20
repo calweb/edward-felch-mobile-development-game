@@ -16,6 +16,8 @@ var characterScrambleTravelTime = 600;
 
 var gameOverOverlayFadeInTime = 500;
 
+var backgroundMedia = null;
+
 function startGame() {
 
 
@@ -33,7 +35,7 @@ function startGame() {
 
     if (window.device)
     {
-        playAudio("/android_asset/guile_music.mp3");
+        playAudio("/android_asset/guile_music.mp3", backgroundMedia);
     }
 
     play = setInterval(scramble, characterScrambleTime);
@@ -53,7 +55,7 @@ function startGame() {
             setTimeout(function() {
                 if (window.device)
                 {
-                    stopAudio();
+                    stopAudio(backgroundMedia);
                 }
                 $("#gameover_overlay").fadeIn('slow');
                 $("#note").hide();
