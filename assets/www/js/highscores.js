@@ -30,7 +30,7 @@ function compareScores(score)
 
     currentHighScores.push(newScore);
 
-    currentHighScores.sort(scoreSort);
+    currentHighScores = currentHighScores.sort(function(a, b) { return b.score-a.score });
 
     if (currentHighScores.length > 10)
     {
@@ -52,18 +52,6 @@ function compareScores(score)
     return null;
 }
 
-function scoreSort(a, b) {
-    if (a.score < b.score)
-    {
-        return 1;
-    } else if (a.score == b.score)
-    {
-        return 0;
-    } else {
-        return -1;
-    }
-}
-
 function generateHighScoreList() {
     var highScores = new Array();
 
@@ -82,7 +70,7 @@ function generateHighScoreList() {
         highScores.push(highScore);
     }
 
-    highScores.sort(scoreSort);
+    highScores = highScores.sort(function(a, b) { return b.score-a.score });
 
     return highScores;
 }

@@ -3,13 +3,5 @@ Gameplay:
     Don't let multiple characters sit on each other 64 width/height
     Animation of explosion when character is disappearing doesn't always show... when it starts to fade out
 
-Secondary:
-    High scores not sorted.
-    Fix splash screen
-
-Later:
-    Main menu landscape / portrait messed up
-       detect orientation change, reset the max/min container size in game?
-
 
 
