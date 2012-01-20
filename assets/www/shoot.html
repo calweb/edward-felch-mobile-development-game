@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/jquery.countdown.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
     <script type="text/javascript" src="js/highscores.js"></script>
+    <script type="text/javascript" src="js/audio.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.0.css" />
     <link rel="stylesheet" href="css/master.css"/>
@@ -38,49 +39,58 @@
             <div id="char8" class="character enemy3"></div>
             <div id="char9" class="character enemy4"></div>
             <div id="char10" class="character enemy5"></div>
-            <div id="char11" class="character enemy6"></div>
+            <div id="char11" class="character enemy11"></div>
             <div id="char12" class="character ally ally1"></div>
             <div id="char13" class="character ally ally2"></div>
         </div>
         <div id="gameover_overlay"></div>
-    </div><!-- /content -->
+    </div>
+    <!-- /content -->
     <script type="text/javascript">
-        var portraitHeight;
-        var landscapeHeight;
-
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#container").css("height", $(window).height() - 80);
 
-            $("#startButton").click(function(){
-                startplay();
+            $("#startButton").click(function () {
+                startGame();
             });
 
-            $('.character').bind('tap',function(event, ui){
+            $('.character').bind('tap', function (event, ui) {
                 if ($(this).hasClass("ally")) {
-                    navigator.notification.vibrate(200);
+                    if (window.device)
+                    {
+                        navigator.notification.vibrate(characterClickedVibrateTimeAlly);
+                    }
 
                     // Bounce right, back and right again. 300 millisecond animation.
                     $(this).effect("bounce",
-                        {
-                            times: 2,
-                            direction: 'right'
-                        },
-                        300);
+                            {
+                                times:2,
+                                direction:'right'
+                            },
+                            characterClickedEffectTime);
 
-                    gameScore--;
+                    gameScore -= 2;
 
                     $("#gameScore").html("Score: " + gameScore);
 
                     $(this).fadeOut("fast");
                 } else {
-                    navigator.notification.vibrate(100);
+                    if (window.device)
+                    {
+                        navigator.notification.vibrate(characterClickedVibrateTimeEnemy);
+                    }
 
                     // Explode into a random number of pieces. 300 millisecond animation.
                     $(this).hide("explode",
-                        {
-                            pieces: Math.floor(Math.random() * 24)
-                        },
-                        400);
+                            {
+                                pieces:Math.floor(Math.random() * 24)
+                            },
+                            characterClickedEffectTime);
+
+                    // Extra point for Domo Kun
+                    if ($(this).hasClass("enemy11")) {
+                        gameScore++;
+                    }
 
                     gameScore++;
 

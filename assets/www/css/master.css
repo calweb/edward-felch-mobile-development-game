@@ -52,7 +52,7 @@ body {
     height: 100%;
     position: absolute;
     opacity: 0.8;
-    filter:alpha(opacity=80);
+    filter: alpha(opacity = 80);
     text-align: center;
     display: none;
 }
@@ -66,18 +66,21 @@ body {
 
 .character:hover {
     opacity: 0.6;
-    filter:alpha(opacity=60);
+    filter: alpha(opacity = 60);
 }
 
 .enemy1 {
     background: url("../img/ninja1.png");
 }
+
 .enemy2 {
     background: url("../img/ninja2.png");
 }
+
 .enemy3 {
     background: url("../img/ninja3.png");
 }
+
 .enemy4 {
     background: url("../img/enemy4.png");
 }
@@ -89,12 +92,15 @@ body {
 .enemy6 {
     background: url("../img/ninja1.png");
 }
+
 .enemy7 {
     background: url("../img/ninja2.png");
 }
+
 .enemy8 {
     background: url("../img/ninja3.png");
 }
+
 .enemy9 {
     background: url("../img/enemy4.png");
 }
@@ -121,10 +127,10 @@ body {
 
 #high_scores li {
     height: 1.5em;
-    margin-left: 25%;
+    margin-left: 5%;
 }
 
 span.score {
     float: right;
-    margin-right: 35%;
+    margin-right: 10%;
 }

@@ -1,9 +1,23 @@
 var play;
 var gameScore = 0;
 
-function startplay() {
-    var playTimeInSeconds = 30;
-    var playTimeinMilliSeconds = playTimeInSeconds * 1000;
+var playTimeInSeconds = 30;
+var playTimeInMilliSeconds = playTimeInSeconds * 1000;
+
+var characterFadeInTime = 300;
+var characterFadeOutTime = 1500;
+
+var characterClickedEffectTime = 400;
+var characterClickedVibrateTimeAlly = 100;
+var characterClickedVibrateTimeEnemy = 50;
+
+var characterScrambleTime = 700;
+var characterScrambleTravelTime = 600;
+
+var gameOverOverlayFadeInTime = 500;
+
+function startGame() {
+
 
     $("#gameover_overlay").fadeOut('slow');
 
@@ -17,12 +31,17 @@ function startplay() {
     $("#startButton").slideUp();
     $("#stat h2").slideUp();
 
-    play = setInterval(scramble, 800);
+    if (window.device)
+    {
+        playAudio("audio/guile_music.mp3");
+    }
+
+    play = setInterval(scramble, characterScrambleTime);
 
     setTimeout(function() {
         clearInterval(play);
         $("#startButton").css("color", "#333333");
-        $("#startButton").bind("click", startplay);
+        $("#startButton").bind("click", startGame);
 
         // End the game, show the overlay and dialog boxes.
         var containerPos = $('#content_container').offset();
@@ -32,6 +51,10 @@ function startplay() {
             left: containerPos.left
         }, 'fast', function() {
             setTimeout(function() {
+                if (window.device)
+                {
+                    stopAudio();
+                }
                 $("#gameover_overlay").fadeIn('slow');
                 $("#note").hide();
                 $(".character").hide();
@@ -42,33 +65,33 @@ function startplay() {
                 $("#startButton").bind("click");
                 $("#note").html("");
                 $("#note").show();
-            }, 500);
+            }, gameOverOverlayFadeInTime);
         });
-    }, playTimeinMilliSeconds);
+    }, playTimeInMilliSeconds);
 
     $('#note').countDown({
         startNumber: playTimeInSeconds,
-        callBack: function(me) {}
+        callBack: function(e) {}
     });
 }
 
-function randomFromTo(from, to){
-    return Math.floor(Math.random() * (to - from + 1) + from);
+function randomMinMax(min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function scramble() {
     var children = $('#container').children();
 
-    var randomId = randomFromTo(1, children.length);
-    moveRandom('char'+randomId);
+    var randomCharacterId = randomMinMax(1, children.length);
+    moveRandom('char'+randomCharacterId);
 
     setTimeout(function(){
-        $("#char"+randomId).fadeIn('fast');
-    }, 300);
+        $("#char"+randomCharacterId).fadeIn('fast');
+    }, characterFadeInTime);
 
     setTimeout(function() {
-        $("#char"+randomId).fadeOut('fast');
-    }, 1250);
+        $("#char"+randomCharacterId).fadeOut('fast');
+    }, characterFadeOutTime);
 }
 
 function moveRandom(id) {
@@ -87,15 +110,15 @@ function moveRandom(id) {
     var minimumY = containerPositionOffset.top + containerPadding;
     var minimumX = containerPositionOffset.left + containerPadding;
 
-    var newY = randomFromTo(minimumY, maximumY);
-    var newX = randomFromTo(minimumX, maximumX);
+    var newY = randomMinMax(minimumY, maximumY);
+    var newX = randomMinMax(minimumX, maximumX);
 
     $('#'+id).animate(
         {
             top: newY,
             left: newX
         },
-        'fast',
+        characterScrambleTravelTime,
         function() {}
     );
 }
@@ -105,7 +128,7 @@ function showConfirm(score) {
 
     if (currentHighScores != null)
     {
-        var nickname = prompt("New High Score! Enter your nickname:", "");
+        var nickname = prompt("New High Score! Enter your name:", "");
 
         if (nickname == null || nickname == "")
         {
