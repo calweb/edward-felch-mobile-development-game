@@ -17,8 +17,11 @@ var characterScrambleTravelTime = 550;
 var gameOverOverlayFadeInTime = 500;
 
 var backgroundMedia = null;
-var enemyMedia = null;
+var enemyMedia1 = null;
+var enemyMedia2 = null;
 var allyMedia = null;
+
+var lastUsedEnemyMedia = "";
 
 function backButtonStop()
 {
@@ -40,7 +43,8 @@ function startGame() {
         backgroundMedia.play();
 
         allyMedia = createAudio("/android_asset/catwail.wav", allyMedia);
-        enemyMedia = createAudio("/android_asset/ninjastar.mp3", enemyMedia);
+        enemyMedia1 = createAudio("/android_asset/ninjastar.mp3", enemyMedia1);
+        enemyMedia2 = createAudio("/android_asset/ninjastar.mp3", enemyMedia2);
     }
 
     $("#gameover_overlay").fadeOut('slow');

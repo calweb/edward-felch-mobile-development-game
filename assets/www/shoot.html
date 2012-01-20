@@ -90,8 +90,18 @@
                 } else {
                     if (window.device)
                     {
-                        enemyMedia.stop();
-                        enemyMedia.play();
+                        if (lastUsedEnemyMedia == "" || lastUsedEnemyMedia == "2")
+                        {
+                            lastUsedEnemyMedia = "1";
+                            enemyMedia1.stop();
+                            enemyMedia1.play();
+                        }
+                        else
+                        {
+                            lastUsedEnemyMedia = "2";
+                            enemyMedia2.stop();
+                            enemyMedia2.play();
+                        }
                     }
 
                     if (window.device)
