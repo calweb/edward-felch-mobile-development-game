@@ -1,11 +1,11 @@
 // Play audio
 //
-function playAudio(src, media_var) {
+function createAudio(src, media_var) {
     // Create Media object from src
     media_var = new Media(src, onSuccess, onError);
 
     // Play audio
-    media_var.play();
+    return media_var;
 }
 
 // Pause audio
@@ -27,18 +27,15 @@ function stopAudio(media_var) {
 // onSuccess Callback
 //
 function onSuccess() {
-    console.log("playAudio():Audio Success");
+    //console.log("playAudio():Audio Success");
 }
 
 // onError Callback
 //
 function onError(error) {
+    /*
     alert('code: '    + error.code    + '\n' +
         'message: ' + error.message + '\n');
+        */
 }
 
-// Set audio position
-//
-function setAudioPosition(position) {
-    document.getElementById('audio_position').innerHTML = position;
-}

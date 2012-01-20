@@ -55,13 +55,13 @@
             });
 
             $('.character').bind('tap', function (event, ui) {
-                var newMedia = null;
-                if (window.device)
-                {
-                    playAudio("/android_asset/ninjastar.mp3", newMedia);
-                }
-
                 if ($(this).hasClass("ally")) {
+                    if (window.device)
+                    {
+                        allyMedia.stop();
+                        allyMedia.play();
+                    }
+
                     if (window.device)
                     {
                         navigator.notification.vibrate(characterClickedVibrateTimeAlly);
@@ -83,13 +83,19 @@
                 } else {
                     if (window.device)
                     {
+                        enemyMedia.stop();
+                        enemyMedia.play();
+                    }
+
+                    if (window.device)
+                    {
                         navigator.notification.vibrate(characterClickedVibrateTimeEnemy);
                     }
 
                     // Explode into a random number of pieces. 300 millisecond animation.
                     $(this).hide("explode",
                             {
-                                pieces:Math.floor(Math.random() * 24)
+                                pieces: 4
                             },
                             characterClickedEffectTime);
 

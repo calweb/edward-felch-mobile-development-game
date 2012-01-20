@@ -4,4 +4,8 @@ Gameplay:
     Animation of explosion when character is disappearing doesn't always show... when it starts to fade out
 
 
+Audio:
+    background music keeps playing
+    audio seems to stop
+
 

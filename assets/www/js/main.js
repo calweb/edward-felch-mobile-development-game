@@ -4,10 +4,10 @@ var gameScore = 0;
 var playTimeInSeconds = 30;
 var playTimeInMilliSeconds = playTimeInSeconds * 1000;
 
-var characterFadeInTime = 300;
-var characterFadeOutTime = 1500;
+var characterFadeInTime = 400;
+var characterFadeOutTime = 1750;
 
-var characterClickedEffectTime = 400;
+var characterClickedEffectTime = 300;
 var characterClickedVibrateTimeAlly = 100;
 var characterClickedVibrateTimeEnemy = 50;
 
@@ -17,9 +17,30 @@ var characterScrambleTravelTime = 600;
 var gameOverOverlayFadeInTime = 500;
 
 var backgroundMedia = null;
+var enemyMedia = null;
+var allyMedia = null;
+
+function backButtonStop()
+{
+    if (window.device && backgroundMedia)
+    {
+        backgroundMedia.stop();
+    }
+
+    document.location.href="ui.html";
+}
 
 function startGame() {
+    if (window.device)
+    {
+        document.addEventListener("backbutton", backButtonStop, false);
 
+        backgroundMedia = createAudio("/android_asset/guile_music.mp3", backgroundMedia);
+        backgroundMedia.play();
+
+        allyMedia = createAudio("/android_asset/catwail.wav", allyMedia);
+        enemyMedia = createAudio("/android_asset/ninjastar.mp3", enemyMedia);
+    }
 
     $("#gameover_overlay").fadeOut('slow');
 
@@ -32,11 +53,6 @@ function startGame() {
     $("#startButton").unbind("click");
     $("#startButton").slideUp();
     $("#stat h2").slideUp();
-
-    if (window.device)
-    {
-        playAudio("/android_asset/guile_music.mp3", backgroundMedia);
-    }
 
     play = setInterval(scramble, characterScrambleTime);
 
@@ -55,7 +71,7 @@ function startGame() {
             setTimeout(function() {
                 if (window.device)
                 {
-                    stopAudio(backgroundMedia);
+                    backgroundMedia.stop();
                 }
                 $("#gameover_overlay").fadeIn('slow');
                 $("#note").hide();
@@ -85,13 +101,21 @@ function scramble() {
     var children = $('#container').children();
 
     var randomCharacterId = randomMinMax(1, children.length);
+
+    if ($("#char"+randomCharacterId).hasClass("active"))
+    {
+        return;
+    }
+
     moveRandom('char'+randomCharacterId);
 
     setTimeout(function(){
+        $("#char"+randomCharacterId).addClass("active");
         $("#char"+randomCharacterId).fadeIn('fast');
     }, characterFadeInTime);
 
     setTimeout(function() {
+        $("#char"+randomCharacterId).removeClass("active");
         $("#char"+randomCharacterId).fadeOut('fast');
     }, characterFadeOutTime);
 }
