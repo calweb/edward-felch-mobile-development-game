@@ -56,10 +56,9 @@
             });
 
             $('.character').bind('tap',function(event, ui){
-
-
                 if ($(this).hasClass("ally")) {
                     navigator.notification.vibrate(200);
+
                     // Bounce right, back and right again. 300 millisecond animation.
                     $(this).effect("bounce",
                         {
@@ -74,8 +73,9 @@
 
                     $(this).fadeOut("fast");
                 } else {
-                    // Explode into a random number of pieces. 300 millisecond animation.
                     navigator.notification.vibrate(100);
+
+                    // Explode into a random number of pieces. 300 millisecond animation.
                     $(this).hide("explode",
                         {
                             pieces: Math.floor(Math.random() * 24)

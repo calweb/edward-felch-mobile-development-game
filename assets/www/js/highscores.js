@@ -8,7 +8,7 @@ function updateHighScore(score, nickname, highScores)
         }
     }
 
-    highScores.sort(scoreSort);
+    highScores = highScores.sort(function(a, b) { return b.score-a.score });
 
     return highScores;
 }
@@ -97,7 +97,7 @@ function saveHighScores(scoreList)
 
 function buildScoreList(list)
 {
-    list.sort(scoreSort);
+    list = list.sort(function(a, b) { return b.score-a.score });
 
     for (i = 0; i < list.length; i++)
     {
