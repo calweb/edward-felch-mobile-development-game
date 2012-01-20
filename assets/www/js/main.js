@@ -33,7 +33,7 @@ function startGame() {
 
     if (window.device)
     {
-        playAudio("audio/guile_music.mp3");
+        playAudio("/android_asset/guile_music.mp3");
     }
 
     play = setInterval(scramble, characterScrambleTime);
