@@ -1,0 +1,9 @@
+Clean up the High Score page, the JQM list looks ugly
+
+Play around with animations, callbacks some more: http://docs.jquery.com/UI/Effects/Slide
+http://api.jquery.com/slideDown/
+High score DB?
+Rotation ? prefer landscape maybe?
+
+
+Sounds?
