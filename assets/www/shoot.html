@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/audio.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.0.css" />
-    <link rel="stylesheet" href="css/master.css"/>
+    <link rel="stylesheet" href="css/mastbacker.css"/>
 </head>
 <body>
 <div data-role="page">
@@ -42,6 +42,8 @@
             <div id="char11" class="character enemy11"></div>
             <div id="char12" class="character ally ally1"></div>
             <div id="char13" class="character ally ally2"></div>
+            <div id="char14" class="character enemy12"></div>
+            <div id="char15" class="character enemy13"></div>
         </div>
         <div id="gameover_overlay"></div>
     </div>
@@ -55,6 +57,11 @@
             });
 
             $('.character').bind('tap', function (event, ui) {
+                if (!$(this).hasClass('active'))
+                {
+                    return;
+                }
+
                 if ($(this).hasClass("ally")) {
                     if (window.device)
                     {

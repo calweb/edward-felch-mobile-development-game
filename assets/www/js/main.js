@@ -7,12 +7,12 @@ var playTimeInMilliSeconds = playTimeInSeconds * 1000;
 var characterFadeInTime = 400;
 var characterFadeOutTime = 1750;
 
-var characterClickedEffectTime = 300;
-var characterClickedVibrateTimeAlly = 100;
+var characterClickedEffectTime = 250;
+var characterClickedVibrateTimeAlly = 50;
 var characterClickedVibrateTimeEnemy = 50;
 
-var characterScrambleTime = 700;
-var characterScrambleTravelTime = 600;
+var characterScrambleTime = 650;
+var characterScrambleTravelTime = 550;
 
 var gameOverOverlayFadeInTime = 500;
 
@@ -27,7 +27,8 @@ function backButtonStop()
         backgroundMedia.stop();
     }
 
-    document.location.href="ui.html";
+    document.removeEventListener("backbutton");
+    $.mobile.changePage("ui.html");
 }
 
 function startGame() {
@@ -116,7 +117,7 @@ function scramble() {
 
     setTimeout(function() {
         $("#char"+randomCharacterId).removeClass("active");
-        $("#char"+randomCharacterId).fadeOut('fast');
+        $("#char"+randomCharacterId).fadeOut(100);
     }, characterFadeOutTime);
 }
 

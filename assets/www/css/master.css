@@ -64,11 +64,6 @@ body {
     display: none;
 }
 
-.character:hover {
-    opacity: 0.6;
-    filter: alpha(opacity = 60);
-}
-
 .enemy1 {
     background: url("../img/ninja1.png");
 }
@@ -111,6 +106,14 @@ body {
 
 .enemy11 {
     background: url("../img/enemy6.jpg");
+}
+
+.enemy12 {
+    background: url("../img/enemy7.png");
+}
+
+.enemy13 {
+    background: url("../img/enemy7.png");
 }
 
 .ally1 {
