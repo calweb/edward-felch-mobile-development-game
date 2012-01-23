@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/master.css"/>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" id="shootingGallery">
     <div data-role="header" data-position="inline">
         <a href="ui.html" data-icon="arrow-l" id="backButton">Back</a>
         <h1>Shooting Gallery</h1>
@@ -50,13 +50,25 @@
     </div>
     <!-- /content -->
     <script type="text/javascript">
-        $(document).ready(function () {
+        $("#shootingGallery").live('pageinit', function() {
+            if (window.device && backgroundMedia)
+            {
+                backgroundMedia.stop();
+            }
+
+            if (play)
+            {
+                clearInterval(play);
+                play = null;
+                gameScore = 0;
+            }
+
             $("#backButton").click(function () {
                 clearInterval(play);
                 play = null;
                 gameScore = 0;
             });
-            
+
             $("#container").css("height", $(window).height() - 80);
 
             $("#startButton").click(function () {

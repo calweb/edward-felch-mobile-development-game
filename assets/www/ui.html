@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/master.css"/>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" id="ui">
     <div data-role="header">
         <h1>Ninjas and Cats</h1>
     </div>
@@ -24,18 +24,20 @@
         <img class="main_image" src="img/ninja-icon.png" width="256px" height="256px" />
     </div>
     <script type="text/javascript">
-        // Check if the user is on a mobile device, and if the background music was started
-        if (window.device && backgroundMedia)
-        {
-            backgroundMedia.stop();
-        }
+        $("#ui").live('pageinit', function() {
+            // Check if the user is on a mobile device, and if the background music was started
+            if (window.device && backgroundMedia)
+            {
+                backgroundMedia.stop();
+            }
 
-        if (play)
-        {
-            clearInterval(play);
-            play = null;
-            gameScore = 0;
-        }
+            if (play)
+            {
+                clearInterval(play);
+                play = null;
+                gameScore = 0;
+            }
+        });
     </script>
 </div>
 </body>

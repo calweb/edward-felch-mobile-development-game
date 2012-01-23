@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/master.css"/>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" id="difficulty">
     <div data-role="header">
         <h1>Mode</h1>
     </div>
@@ -25,7 +25,7 @@
         <a id="hard" href="shoot.html" data-role="button" data-transition="slide">Hard</a>
     </div>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $("#difficulty").live('pageinit', function() {
             $("a").click(function () {
                 var difficulty = $(this).attr('id');
                 window.localStorage.setItem("difficulty", difficulty);
