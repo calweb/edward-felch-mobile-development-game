@@ -14,7 +14,7 @@ var characterFadeOutTime = 1750;
 
 // How long before another character is scrambled, adjust this to make the game easier or harder.
 var characterScrambleTime = 650;
-var characterScrambleTravelTime = 550;
+var characterScrambleTravelTime = 100;
 
 // Effects when a character is clicked.
 var characterClickedEffectTime = 250;
@@ -42,19 +42,23 @@ function backButtonStop()
     $.mobile.changePage("ui.html");
 }
 
+function resetGame()
+{
+
+}
+
 function startGame() {
     if (window.localStorage.getItem("difficulty") && window.localStorage.getItem("difficulty") != "normal")
     {
         if (window.localStorage.getItem("difficulty") == "easy")
         {
             characterFadeOutTime = 2500;
-            characterScrambleTime = 100;
+            characterScrambleTime = 975;
         }
         else
         {
             characterFadeOutTime = 1000;
-            characterScrambleTime = 300;
-            characterScrambleTravelTime = 100;
+            characterScrambleTime = 325;
         }
     }
 
