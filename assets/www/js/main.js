@@ -57,7 +57,7 @@ function startGame() {
         if (window.localStorage.getItem("difficulty") == "easy")
         {
             characterFadeOutTime = 2500;
-            characterScrambleTime = 1000;
+            characterScrambleTime = 100;
         }
         else
         {
@@ -65,7 +65,6 @@ function startGame() {
             characterScrambleTime = 300;
             characterScrambleTravelTime = 100;
         }
-
     }
 
     if (window.device)
