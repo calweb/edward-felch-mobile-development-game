@@ -45,10 +45,29 @@ function backButtonStop()
     }
 
     document.removeEventListener("backbutton");
+    clearInterval(play);
+    play = null;
+    gameScore = 0;
     $.mobile.changePage("ui.html");
 }
 
 function startGame() {
+    if (window.localStorage.getItem("difficulty") && window.localStorage.getItem("difficulty") != "normal")
+    {
+        if (window.localStorage.getItem("difficulty") == "easy")
+        {
+            characterFadeOutTime = 2500;
+            characterScrambleTime = 1000;
+        }
+        else
+        {
+            characterFadeOutTime = 1000;
+            characterScrambleTime = 300;
+            characterScrambleTravelTime = 100;
+        }
+
+    }
+
     if (window.device)
     {
         document.addEventListener("backbutton", backButtonStop, false);

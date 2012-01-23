@@ -16,11 +16,12 @@
 <body>
 <div data-role="page">
     <div data-role="header" data-position="inline">
-        <a href="ui.html" data-icon="arrow-l">Back</a>
+        <a href="ui.html" data-icon="arrow-l" id="backButton">Back</a>
         <h1>Shooting Gallery</h1>
         <a href="#"><span id="gameScore">Score: 0</span></a>
     </div>
     <div data-role="content" id="content_container">
+
         <div id="stat">
             <h2>
                 Don't kill the cats!
@@ -50,6 +51,12 @@
     <!-- /content -->
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#backButton").click(function () {
+                clearInterval(play);
+                play = null;
+                gameScore = 0;
+            });
+            
             $("#container").css("height", $(window).height() - 80);
 
             $("#startButton").click(function () {
