@@ -1,6 +1,10 @@
-Ninjas and Cats is a demonstration app for Android that was built with jQuery Mobile, PhoneGap, and a lot of hacked up JavaScript.
+Ninjas and Cats v1 2012-01-23
 
-All the logic for the game is stored within the JavaScript and HTML pages.
+This Android application was built with jQuery Mobile, PhoneGap, and a lot of hacked up Javascript.
 
-Not much else is being added to this, feel free to fork and change the code - hopefully, it can help in learning how to build a
-    mobile app whose logic can easily be ported to different platforms.
+This application should be easy to deploy on different platforms since all the logic that controls the game is stored
+within HTML and JavaScript.
+
+There aren't any real plans on continuing this project since it was created for an event and as a learning exercise.
+
+Feel free to fork and modify the source.
