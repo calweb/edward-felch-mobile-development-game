@@ -63,14 +63,11 @@
                 }
 
                 if ($(this).hasClass("ally")) {
+                    // Check if the user is on a mobile device PhoneGap supports.
                     if (window.device)
                     {
                         allyMedia.stop();
                         allyMedia.play();
-                    }
-
-                    if (window.device)
-                    {
                         navigator.notification.vibrate(characterClickedVibrateTimeAlly);
                     }
 
@@ -82,12 +79,14 @@
                             },
                             characterClickedEffectTime);
 
+                    // Lose 2 points for clicking on a cat.
                     gameScore -= 2;
 
                     $("#gameScore").html("Score: " + gameScore);
 
                     $(this).fadeOut("fast");
                 } else {
+                    // Check if the user is on a mobile device PhoneGap supports.
                     if (window.device)
                     {
                         if (lastUsedEnemyMedia == "" || lastUsedEnemyMedia == "2")
@@ -102,10 +101,7 @@
                             enemyMedia2.stop();
                             enemyMedia2.play();
                         }
-                    }
 
-                    if (window.device)
-                    {
                         navigator.notification.vibrate(characterClickedVibrateTimeEnemy);
                     }
 
@@ -116,7 +112,7 @@
                             },
                             characterClickedEffectTime);
 
-                    // Extra point for Domo Kun
+                    // Extra point for killing  Domo Kun
                     if ($(this).hasClass("enemy11")) {
                         gameScore++;
                     }
