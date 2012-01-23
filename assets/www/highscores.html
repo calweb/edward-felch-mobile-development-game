@@ -23,7 +23,7 @@
         <ol id="high_scores"></ol>
     </div>
     <script type="text/javascript" charset="utf-8">
-        $("#highScores").live('pageload', function() {
+        $("#highScores").live('pageinit', function() {
             var scoreList = generateHighScoreList();
             buildScoreList(scoreList);
         });
