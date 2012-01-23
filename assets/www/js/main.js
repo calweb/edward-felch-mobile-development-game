@@ -213,3 +213,10 @@ function showConfirm(score) {
 
     return;
 }
+
+.ui-dialog .ui-header,
+.ui-dialog .ui-content,
+.ui-dialog .ui-footer {
+    max-width: 500px;
+    margin: 10% auto 15px auto;
+}
