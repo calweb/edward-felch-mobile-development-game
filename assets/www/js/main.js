@@ -94,40 +94,43 @@ function startGame() {
     // Begin scrambling characters.
     play = setInterval(scramble, characterScrambleTime);
 
-    setTimeout(function() {
-        clearInterval(play);
-        $("#startButton").css("color", "#333333");
-        $("#startButton").bind("click", startGame);
-
-        // End the game, show the overlay and dialog boxes.
-        var containerPos = $('#content_container').offset();
-
-        $("#gameover_overlay").animate({
-            top: containerPos.top,
-            left: containerPos.left
-        }, 'fast', function() {
-            setTimeout(function() {
-                if (window.device)
-                {
-                    backgroundMedia.stop();
-                }
-                $("#gameover_overlay").fadeIn('slow');
-                $("#note").hide();
-                $(".character").hide();
-                showConfirm(gameScore);
-                $("#gameover_overlay").fadeOut('slow');
-
-                $("#startButton").slideDown();
-                $("#startButton").bind("click");
-                $("#note").html("");
-                $("#note").show();
-            }, gameOverOverlayFadeInTime);
-        });
-    }, playTimeInMilliSeconds);
+    setTimeout(endGame, playTimeInMilliSeconds);
 
     $('#note').countDown({
         startNumber: playTimeInSeconds,
         callBack: function(e) {}
+    });
+}
+
+function endGame()
+{
+    clearInterval(play);
+    $("#startButton").css("color", "#333333");
+    $("#startButton").bind("click", startGame);
+
+    // End the game, show the overlay and dialog boxes.
+    var containerPos = $('#content_container').offset();
+
+    $("#gameover_overlay").animate({
+        top: containerPos.top,
+        left: containerPos.left
+    }, 'fast', function() {
+        setTimeout(function() {
+            if (window.device)
+            {
+                backgroundMedia.stop();
+            }
+            $("#gameover_overlay").fadeIn('slow');
+            $("#note").hide();
+            $(".character").hide();
+            showConfirm(gameScore);
+            $("#gameover_overlay").fadeOut('slow');
+
+            $("#startButton").slideDown();
+            $("#startButton").bind("click");
+            $("#note").html("");
+            $("#note").show();
+        }, gameOverOverlayFadeInTime);
     });
 }
 
